@@ -89,40 +89,102 @@ public class BinaryTree<T> implements Sequence<T>, ReverseSequence<T> {
 
         // Return the first node wrt. inorder in this subtree.
         public Node first() {
-            // student implements
-            return null; // DELETE THIS LINE AND INSERT YOUR CODE
+
+            Node current = this;
+
+            if (current.left == null)
+            {
+                return current;
+            }
+
+            else
+            {
+                return current.left.first();
+            }
         }
 
         // Return the last node wrt. inorder in this subtree.
         public Node last() {
-            // student implements
-            return null; // DELETE THIS LINE AND INSERT YOUR CODE
+
+            Node current = this;
+
+            //Check if right is null
+            if (current.right == null)
+            {
+                return current;
+            }
+
+            else
+            {
+                return current.right.last();
+            }
         }
 
         // Return the first ancestor that is next wrt. inorder
         // or null if there is none.
-        public Node nextAncestor() {
-            // student implements
-            return null; // DELETE THIS LINE AND INSERT YOUR CODE
+        public Node nextAncestor()
+        {
+
+            Node current = this;
+
+            if (current.parent != null && current == parent.right)
+            {
+                return parent.nextAncestor();
+            }
+
+            else
+            {
+                return parent;
+            }
         }
 
         // Return the first ancestor that is previous wrt. inorder
         // or null if there is none.
         public Node prevAncestor() {
-            // student implements
-            return null; // DELETE THIS LINE AND INSERT YOUR CODE
+
+            Node current = this;
+
+            if (current.parent != null && current == parent.left)
+            {
+                return parent.prevAncestor();
+            }
+
+            else
+            {
+                return parent;
+            }
         }
 
         // Return the next node wrt. inorder in the entire tree.
         public Node next() {
-            // student implements
-            return null; // DELETE THIS LINE AND INSERT YOUR CODE
+
+            Node current = this;
+
+            if (current.right != null)
+            {
+                return right.first();
+            }
+
+            else
+            {
+                return current.nextAncestor();
+            }
         }
 
         // Return the previous node wrt. inorder in the entire tree.
         public Node previous() {
-            // student implements
-            return null; // DELETE THIS LINE AND INSERT YOUR CODE
+
+            Node current = this;
+
+            if (current.left != null)
+            {
+                return left.last();
+            }
+
+            else
+            {
+                return current.prevAncestor();
+            }
         }
 
     }
@@ -141,32 +203,32 @@ public class BinaryTree<T> implements Sequence<T>, ReverseSequence<T> {
 
         @Override
         public T get() {
-            // student implements
-            // YOUR CODE
+
+            return curr.data;
         }
 
         @Override
         public void retreat() {
-            // student implements
-            // YOUR CODE
+
+            curr = curr.previous();
         }
 
         @Override
         public void advance() {
-            // student implements
-            // YOUR CODE
+
+            curr = curr.next();
         }
 
         @Override
         public boolean equals(Object other) {
-            // student implements
-            // YOUR CODE
+
+            return this.curr == ((Iter) other).curr;
         }
 
         @Override
         public Iter clone() {
-            // student implements
-            // YOUR CODE
+
+            return new Iter(curr);
         }
     }
 }

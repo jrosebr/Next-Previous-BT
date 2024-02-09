@@ -3,10 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
 
 public class BinaryTreeTest {
 
@@ -14,7 +11,13 @@ public class BinaryTreeTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        // INIT BINARY TREE T HERE
+
+        Integer[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        ArrayList<Integer> arr_list = new ArrayList<>(List.of(arr));
+        T = new BinaryTree<>(arr_list);
+
+        System.out.println(T.getRoot().first());
+        System.out.println(T.getRoot().last());
     }
 
     @Test
