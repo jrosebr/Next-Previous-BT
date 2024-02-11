@@ -9,6 +9,7 @@ public class BinaryTreeTest {
 
     BinaryTree<Integer> T;
 
+    //Normal Tests
     @Test
     public void normal_first()
     {
@@ -61,14 +62,44 @@ public class BinaryTreeTest {
         ArrayList<Integer> arr_list = new ArrayList<>(List.of(arr));
         T = new BinaryTree<>(arr_list);
 
-        assertEquals("2", T.getRoot().first().next());
-        assertEquals("5", T.getRoot().last().next());
+        assertEquals(2, T.getRoot().first().next().data);
+        assertEquals(4, T.getRoot().left.next().data);
+        assertEquals(null, T.getRoot().last().next());
+    }
+
+    @Test
+    public void normal_previous()
+    {
+        Integer[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        ArrayList<Integer> arr_list = new ArrayList<>(List.of(arr));
+        T = new BinaryTree<>(arr_list);
+
+        assertEquals(8, T.getRoot().last().previous().data);
+        assertEquals(7, T.getRoot().right.previous().data);
+        assertEquals(null, T.getRoot().first().previous());
+    }
+
+    //Empty Tests
+    @Test
+    public void empty_test()
+    {
+        Integer[] arr = {};
+        ArrayList<Integer> arr_list = new ArrayList<>(List.of(arr));
+        T = new BinaryTree<>(arr_list);
+
+        assertEquals(null, T.getRoot());
     }
 
     @Test
     public void test() {
-        // DEFINE EACH TEST CASE AS A SEPARATE FUNCTION
-        // CALL ALL TEST FUNCTIONS HERE
+        normal_first();
+        normal_last();
+        normal_nextAncestor();
+        normal_prevAncestor();
+        normal_next();
+        normal_previous();
+        empty_test();
+
     }
 
 }
