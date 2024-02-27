@@ -8,7 +8,7 @@ public class BinaryTree<T> implements Sequence<T>, ReverseSequence<T> {
     public Node getRoot() {
 	return this.root;
     }
-    
+
     public void setRoot(Node root) {
         this.root = root;
     }
